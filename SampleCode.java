@@ -1,4 +1,4 @@
-public class SampleCode{
+public class SampleCode {
     public static void main(String[] args) {
 //         Assigning string value to a variable 'name'.
         String name = "dany";
@@ -124,11 +124,11 @@ public class SampleCode{
         System.out.println(tx);
 
 //        Math functions.
-        System.out.println(Math.max(15,10));
+        System.out.println(Math.max(15, 10));
         System.out.println(Math.min(25, 20));
         System.out.println(Math.sqrt(49));
         System.out.println(Math.abs(-3.7));
-        System.out.println(Math.random()*200);
+        System.out.println(Math.random() * 200);
 
 //      if-else condition
         int time = 22;
@@ -192,7 +192,7 @@ public class SampleCode{
             if (e == 6) {
                 continue;
             }
-            if (e == 8){
+            if (e == 8) {
                 break;
             }
         }
@@ -203,7 +203,7 @@ public class SampleCode{
         cars[0] = "Opel";
         System.out.println(cars[0]);
         System.out.println(cars.length);
-        for (int f = 0; f < cars.length; f+=2) {
+        for (int f = 0; f < cars.length; f += 2) {
             System.out.println(cars[f]);
         }
         for (String f : cars) {
@@ -211,11 +211,116 @@ public class SampleCode{
         }
 
 //        Multidimensional array.
-        int[][] myNumbers = { {1, 2, 3, 4}, {5, 6, 7} };
+        int[][] myNumbers = {{1, 2, 3, 4}, {5, 6, 7}};
         for (int o = 0; o < myNumbers.length; ++o) {
-            for(int h = 0; h < myNumbers[o].length; ++h) {
+            for (int h = 0; h < myNumbers[o].length; ++h) {
                 System.out.println(myNumbers[o][h]);
             }
         }
+
+//        calling the declared method which has no parameters passing through it.
+        myMethod();
+
+//        method with single parameter.
+        myMethod("Liam");
+        myMethod("Jenny");
+        myMethod("Anja");
+
+//        method with multiple parameters.
+        myMethod("Liam", 5);
+        myMethod("Jenny", 8);
+        myMethod("Anja", 31);
+
+//        Storing the result in a variable and printing the variable.
+        int ab = myMethod(5, 3);
+        System.out.println(ab);
+
+//        Method with a value.
+        checkAge(30);
+
+//        Method Overloading
+        int myNum1 = plusMethod(8, 5);
+        double myNum2 = plusMethod(4.3, 6.26);
+        System.out.println("int: " + myNum1);
+        System.out.println("double: " + myNum2);
+
+//        Recursion.
+        int res = sum(10);
+        System.out.println(res);
+
+//    Creating object of a class
+            SampleCode myObj = new SampleCode();
+            myObj.bc = 20;   //modifying value of an attribute
+            System.out.println(myObj.bc);
+
+//     Accessing attributes
+        System.out.println("Name: " + myObj.jname + " " + myObj.lname);
+        System.out.println("Age: " + myObj.age);
+
     }
+
+    //    creating a method
+    private static void myMethod() {
+        System.out.println("I just got executed");
+    }
+
+    //    method with single parameter
+    static void myMethod(String person) {
+        System.out.println(person + " Refuses");
+    }
+
+    //     method with multiple parameters
+    static void myMethod(String person, int age) {
+        System.out.println(person + " is " + age);
+    }
+
+    //     Using return keyword inside the method
+    static int myMethod(int x, int y) {
+        return x + y;
+    }
+
+
+    //  Method with If-else
+//    Create a checkAge() method with an integer variable called age
+    static void checkAge(int age) {
+
+//        If age is less than 18, print "access denied"
+        if (age < 18) {
+            System.out.println("Access denied - You are not old enough!");
+
+//            If age is greater than, or equal to, 18, print "access granted"
+        } else {
+            System.out.println("Access granted - You are old enough!");
+        }
+    }
+
+    //    Method Overloading.
+//    passing different parameters with in the same method
+    static int plusMethod(int x, int y) {
+        return x + y;
+    }
+
+    static double plusMethod(double x, double y) {
+        return x + y;
+    }
+
+    //    Recursion:Function calls itself
+//    Here sum() function is called
+    public static int sum(int k) {
+        if (k > 0) {
+            return k + sum(k - 1);
+        } else {
+            return 0;
+        }
+
+    }
+//      JAVA CLASSES
+//    assigning value to attribute taken with by obj.
+   int bc = 5;
+
+//   Multiple attributes.
+    String jname = "john";
+    String lname = "doe";
+    int age = 26;
 }
+
