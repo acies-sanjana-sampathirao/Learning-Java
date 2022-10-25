@@ -1,5 +1,25 @@
+//   packages
+import java.util.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.regex.*;
+
 public class SampleCode {
-    public static void main(String[] args) {
+
+//    Constructor
+
+    public SampleCode() {
+    }
+
+    int personAge;
+    String personName;
+
+    public void main(String[] args) {
 //         Assigning string value to a variable 'name'.
         String name = "dany";
         System.out.println(name);
@@ -249,38 +269,183 @@ public class SampleCode {
         System.out.println(res);
 
 //    Creating object of a class
-            SampleCode myObj = new SampleCode();
-            myObj.bc = 20;   //modifying value of an attribute
-            System.out.println(myObj.bc);
+        SampleCode myObj = new SampleCode();
+        myObj.bc = 20;   //modifying value of an attribute
+        System.out.println(myObj.bc);
 
 //     Accessing attributes
         System.out.println("Name: " + myObj.jname + " " + myObj.lname);
         System.out.println("Age: " + myObj.age);
 
+//        Call the static method
+        myStaticMethod();
+
+//        Create an object of class to call the public method.
+        SampleCode mObj = new SampleCode();
+        mObj.myPublicMethod(); // Call the public method on the object
+
+//        Calling Constructor
+        SampleCode sobj = new SampleCode();
+        System.out.println(sobj.personName + " " + sobj.personAge);
+
+        Student nObj = new Student();
+        nObj.study(); // call abstract method
+
+//        Encapsulation
+//        Get and Set methods
+        SampleCode sObj = new SampleCode();
+        sObj.setName("John"); // Set the value of the name variable to "John"
+        System.out.println(sObj.getName());
+
+//        Inheritance
+        // Create a myCar object
+        Car myCar = new Car();
+        // Display the value of the brand attribute (from the Vehicle class) and the value of the modelName from the Car class
+        System.out.println(" " + myCar.modelName);
+
+//       Polymorphism (many forms)
+        SampleCode myAnimal = new SampleCode();  // Create a Animal object
+        SampleCode myPig = new Pig();  // Create a Pig object
+        SampleCode myDog = new Dog();  // Create a Dog object
+        myAnimal.animalSound();
+        myPig.animalSound();
+        myDog.animalSound();
+
+//        Multiple Interfaces
+        DemoClass iObj = new DemoClass();
+        iObj.myMethod();
+        iObj.myOtherMethod();
+
+//        enum
+        Level myVar = Level.LOW;
+        System.out.println(myVar);
+
+//        Java user input
+        Scanner uObj = new Scanner(System.in);  // Create a Scanner object
+        String userName = uObj.nextLine();  // Read user input
+        System.out.println("Username is: " + userName);  // Output user input
+
+//        Java date
+        LocalDate dateObj = LocalDate.now(); // Create a date object
+        System.out.println(dateObj); // Display the current date
+
+//        Java time
+        LocalTime timeObj = LocalTime.now();
+        System.out.println(timeObj);
+
+//        Java ArrayList
+        ArrayList<String> car = new ArrayList<String>();
+        car.add("Volvo");
+        car.add("BMW");
+        car.add("Ford");
+        car.add("Mazda");
+        System.out.println(car);
+        System.out.println(car.get(0));
+        System.out.println(car.set(0, "Opel"));
+        System.out.println(car.remove(0));
+        System.out.println(car.size());
+        for (int f = 0; f < car.size(); f++) {
+            System.out.println(car.get(f));
+        }
+
+//        Java linkedList
+        LinkedList<String> carss = new LinkedList<String>();
+        carss.add("Volvo");
+        carss.add("BMW");
+        carss.add("Ford");
+        carss.add("Mazda");
+        System.out.println(carss);
+
+//        HashMap
+        // Create a HashMap object called capitalCities
+        HashMap<String, String> capitalCities = new HashMap<String, String>();
+
+        // Add keys and values (Country, City)
+        capitalCities.put("England", "London");
+        capitalCities.put("Germany", "Berlin");
+        capitalCities.put("Norway", "Oslo");
+        capitalCities.put("USA", "Washington DC");
+        System.out.println(capitalCities);
+
+//        HashSet
+        HashSet<String> bikes = new HashSet<String>();
+        bikes.add("Zeus");
+        bikes.add("Flash");
+        bikes.add("Satan");
+        bikes.add("Flash");
+        bikes.add("Aero");
+        System.out.println(bikes);
+
+//        Iterators
+//         Get the iterator
+        Iterator<String> it = Arrays.stream(cars).iterator();
+
+        // Print the first item
+        System.out.println(it.next());
+
+//        Wrapper classes (Using wrapper class instead of primitive data type)
+        Integer Int = 5;
+        Double Double = 5.99;
+        Character myChar = 'A';
+        System.out.println(Int);
+        System.out.println(Double);
+        System.out.println(myChar);
+
+//        Exceptions (try and catch)
+        try {
+            int[] numbers = {1, 2, 3};
+            System.out.println(numbers[10]);
+        } catch (Exception ae) {
+            System.out.println("Something went wrong.");
+        }
+
+//        Regular Expressions
+        Pattern pattern = Pattern.compile("w3schools", Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher("Visit W3Schools!");
+        boolean matchFound = matcher.find();
+        if (matchFound) {
+            System.out.println("Match found");
+        } else {
+            System.out.println("Match not found");
+        }
+
+//        Threads
+        SampleCode obj = new SampleCode();
+        Thread thread = new Thread((Runnable) obj);
+        thread.start();
+        System.out.println("This code is outside of the thread");
+
+//        Java Lambda
+        ArrayList<Integer> numbers = new ArrayList<Integer>();
+        numbers.add(5);
+        numbers.add(9);
+        numbers.add(8);
+        numbers.add(1);
+        numbers.forEach( (w) -> { System.out.println(w); } );
     }
 
-    //    creating a method
+//    creating a method
     private static void myMethod() {
         System.out.println("I just got executed");
     }
 
-    //    method with single parameter
+    //        method with single parameter
     static void myMethod(String person) {
         System.out.println(person + " Refuses");
     }
 
-    //     method with multiple parameters
+    //         method with multiple parameters
     static void myMethod(String person, int age) {
         System.out.println(person + " is " + age);
     }
 
-    //     Using return keyword inside the method
+    //         Using return keyword inside the method
     static int myMethod(int x, int y) {
         return x + y;
     }
 
 
-    //  Method with If-else
+    //      Method with If-else
 //    Create a checkAge() method with an integer variable called age
     static void checkAge(int age) {
 
@@ -304,7 +469,7 @@ public class SampleCode {
         return x + y;
     }
 
-    //    Recursion:Function calls itself
+    //        Recursion:Function calls itself
 //    Here sum() function is called
     public static int sum(int k) {
         if (k > 0) {
@@ -314,13 +479,93 @@ public class SampleCode {
         }
 
     }
-//      JAVA CLASSES
-//    assigning value to attribute taken with by obj.
-   int bc = 5;
 
-//   Multiple attributes.
+    //         JAVA CLASSES
+//    assigning value to attribute taken with by obj.
+    int bc = 5;
+
+    //   Multiple attributes.
     String jname = "john";
     String lname = "doe";
     int age = 26;
+
+    //    Static method
+    private static void myStaticMethod() {
+        System.out.println("Static methods can be called without creating objects");
+    }
+
+    //    Public method
+//    To access a public method , object should be created.
+    public void myPublicMethod() {
+        System.out.println("Public methods must be called by creating objects");
+    }
+
+    //    public abstract void study(); unable to create a abstract class
+//    Subclass (inherit from SampleCode)
+    static class Student extends SampleCode {
+        public int graduationYear = 2018;
+
+        public void study() { // the body of the abstract method is provided here
+            System.out.println("Studying all day long");
+        }
+    }
+
+    //    Getter and setter
+    private String name;
+
+    public String getName() {
+        return name;
+    }
+    // Setter
+    public void setName(String newName) {
+        this.name = newName;
+    }
+
+    //     Inheritance
+    static class Car extends SampleCode {
+        private String modelName = "Mustang";
+    }
+
+    //    Polymorphism
+    public void animalSound() {
+        System.out.println("The animal makes a sound");
+    }
+}class Pig extends SampleCode {
+        public void animalSound() {
+            System.out.println("The pig says: wee wee");
+        }
+    }class Dog extends SampleCode {
+        public void animalSound() {
+            System.out.println("The dog says: bow wow");
+        }
+    }
+
+//    Interfaces
+interface FirstInterface {
+   public void myMethod(); // interface method
 }
+
+interface SecondInterface {
+    public void myOtherMethod(); // interface method
+}
+
+// DemoClass "implements" FirstInterface and SecondInterface
+class DemoClass implements FirstInterface, SecondInterface {
+    public void myMethod() {
+        System.out.println("Some text..");
+    }
+    public void myOtherMethod() {
+        System.out.println("Some other text...");
+    }
+}
+
+//  Enum(represents a group of constants like final)
+enum Level {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+
+
+
 
